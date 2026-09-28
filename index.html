@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VEM AÍ • Grupo Jovem — Paróquia Matriz de São Gonçalo | grupojovem.com</title>
+<meta name="description" content="VEM AÍ: o encontro semanal de jovens católicos na Paróquia Matriz de São Gonçalo (RJ). Louvor, amizade, fé e festa. Estreia 28 de outubro, 19h30. Entrada gratuita. Siga @ogrupojovem." />
+<meta name="theme-color" content="#0D060F" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://grupojovem.com" />
+<meta property="og:site_name" content="Grupo Jovem" />
+<meta property="og:title" content="VEM AÍ • Grupo Jovem — Paróquia Matriz de São Gonçalo" />
+<meta property="og:description" content="Estreia 28/10 às 19h30! Louvor, amizade, fé e festa toda semana. Entrada gratuita • Siga @ogrupojovem" />
+<meta property="og:image" content="https://images.pexels.com/photos/10024790/pexels-photo-10024790.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23140817' stroke='%23FFC24B' stroke-width='4'/%3E%3Crect x='28' y='11' width='8' height='42' rx='2.5' fill='%23FFC24B'/%3E%3Crect x='17' y='21' width='30' height='8' rx='2.5' fill='%23FFC24B'/%3E%3C/svg%3E" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#140817; --cream:#FFF7ED; --gold:#FFC24B; --coral:#FF4D6D; --orange:#FF7A00; --violet:#7C3AED; }
+  html{ background:#0D060F; }
+  body{ font-family:'Plus Jakarta Sans',sans-serif; background:#0D060F; color:var(--cream); overflow-x:hidden; }
+  .font-display{ font-family:'Fraunces',serif; }
+  .font-hand{ font-family:'Caveat',cursive; }
+  .text-stroke-cream{ -webkit-text-stroke:2px rgba(255,247,237,.9); color:transparent; }
+  @media(max-width:640px){ .text-stroke-cream{ -webkit-text-stroke-width:1.3px; } }
+  .grain::after{
+    content:""; position:fixed; inset:0; z-index:90; pointer-events:none; opacity:.09; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .marquee-track{ display:flex; width:max-content; animation:marquee 26s linear infinite; }
+  .marquee-track.slow{ animation-duration:38s; }
+  @keyframes marquee{ to{ transform:translateX(-50%);} }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0) rotate(var(--r,0deg)); } 50%{ transform:translateY(-14px) rotate(var(--r,0deg)); } }
+  @keyframes spin-slow{ to{ transform:rotate(360deg);} }
+  @keyframes pulse-glow{ 0%,100%{ opacity:.6; transform:scale(1);} 50%{ opacity:1; transform:scale(1.08);} }
+  @keyframes shine{ 0%{ transform:translateX(-100%) skewX(-15deg);} 100%{ transform:translateX(250%) skewX(-15deg);} }
+  .animate-floaty{ animation:floaty 6s ease-in-out infinite; }
+  .glass{ background:rgba(255,247,237,.07); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,247,237,.14); }
+  .btn-shine{ position:relative; overflow:hidden; }
+  .btn-shine::after{ content:""; position:absolute; top:0; bottom:0; width:40%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent); animation:shine 3.2s ease-in-out infinite; pointer-events:none; }
+  .ticket-notch{ -webkit-mask:radial-gradient(18px at left center, transparent 98%, black) left / 51% 100% no-repeat, radial-gradient(18px at right center, transparent 98%, black) right / 51% 100% no-repeat; }
+  .reveal{ opacity:0; transform:translateY(34px) scale(.98); transition:all .9s cubic-bezier(.22,1,.36,1); }
+  .reveal.visible{ opacity:1; transform:none; }
+  .reveal-d1{ transition-delay:.08s } .reveal-d2{ transition-delay:.16s } .reveal-d3{ transition-delay:.24s }
+  .polaroid{ transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s; }
+  .card-hover{ transition:all .5s cubic-bezier(.22,1,.36,1); }
+  .card-hover:hover{ transform:translateY(-8px); border-color:rgba(255,194,75,.5); background:rgba(255,194,75,.08); }
+  details[open] summary .plus{ transform:rotate(45deg); }
+  summary::-webkit-details-marker{ display:none; }
+  .plus{ transition:transform .3s; }
+  .tab-active{ background:#FFC24B !important; color:#140817 !important; border-color:#FFC24B !important; }
+  ::selection{ background:#FFC24B; color:#140817; }
+  ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:#0D060F; } ::-webkit-scrollbar-thumb{ background:linear-gradient(#FFC24B,#FF4D6D); border-radius:99px; }
+  .halo{ background:radial-gradient(closest-side, rgba(255,194,75,.35), rgba(255,77,109,.18), transparent); filter:blur(10px); }
+  .dotted-line{ background-image:linear-gradient(to bottom, rgba(255,247,237,.35) 45%, transparent 45%); background-size:2px 12px; background-repeat:repeat-y; }
+
+  /* ✝ LOGO: cruz luminosa com raios (estilo ostensório) */
+  .gj-logo{ position:relative; display:grid; place-items:center; flex-shrink:0; border-radius:9999px; padding:2px; background:conic-gradient(from 200deg,#FFC24B,#FF7A00,#FF4D6D,#7C3AED,#FFC24B); box-shadow:0 10px 28px -8px rgba(255,122,0,.65); transition:transform .5s cubic-bezier(.22,1,.36,1); }
+  .gj-logo.lg{ padding:3px; box-shadow:0 20px 60px -15px rgba(255,122,0,.75); }
+  .gj-logo-inner{ position:relative; width:100%; height:100%; border-radius:9999px; overflow:hidden; display:grid; place-items:center; background:radial-gradient(circle at 50% 40%,#3b1845 0%,#140817 72%); }
+  .gj-rays{ position:absolute; inset:0; background:repeating-conic-gradient(from 0deg, rgba(255,194,75,.6) 0deg 5deg, transparent 5deg 30deg); -webkit-mask:radial-gradient(closest-side,#000 25%,transparent 100%); mask:radial-gradient(closest-side,#000 25%,transparent 100%); animation:spin-slow 24s linear infinite; }
+  .gj-cross{ position:relative; width:54%; height:54%; fill:#FFC24B; filter:drop-shadow(0 0 4px rgba(255,210,122,.95)) drop-shadow(0 0 10px rgba(255,122,0,.55)); }
+  a:hover .gj-logo{ transform:scale(1.07); }
+  .ig-ring{ background:conic-gradient(from 210deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5,#FEDA75); }
+  .map-dark{ filter:invert(90%) hue-rotate(180deg) saturate(.9) contrast(.92); }
+  .no-scrollbar{ scrollbar-width:none; } .no-scrollbar::-webkit-scrollbar{ display:none; }
+</style>
+</head>
+<body class="grain antialiased">
+
+<!-- SVG sprite (WhatsApp + Instagram) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></symbol>
+</svg>
+
+<!-- ══════════ TOP MARQUEE ══════════ -->
+<div class="relative z-[60] bg-[#FFC24B] text-[#140817] overflow-hidden py-2 border-b-2 border-[#140817] -rotate-[.6deg] scale-[1.01]">
+  <div class="marquee-track text-[13px] font-extrabold tracking-[.18em] uppercase whitespace-nowrap">
+    <div class="flex items-center gap-8 pr-8">
+      <span>★ Estreia <span data-gj="day-month">28 de outubro</span></span><span>•</span><span><span data-gj="weekday">quarta-feira</span> • <span data-gj="time">19h30</span></span><span>•</span><span>✝ Paróquia Matriz de São Gonçalo</span><span>•</span><span>Entrada gratuita</span><span>•</span><span>Siga @ogrupojovem</span><span>•</span><span>Traga um amigo</span><span>•</span>
+      <span>★ Estreia <span data-gj="day-month">28 de outubro</span></span><span>•</span><span><span data-gj="weekday">quarta-feira</span> • <span data-gj="time">19h30</span></span><span>•</span><span>✝ Paróquia Matriz de São Gonçalo</span><span>•</span><span>Entrada gratuita</span><span>•</span><span>Siga @ogrupojovem</span><span>•</span><span>Traga um amigo</span><span>•</span>
+    </div>
+    <div class="flex items-center gap-8 pr-8" aria-hidden="true">
+      <span>★ Estreia <span data-gj="day-month">28 de outubro</span></span><span>•</span><span><span data-gj="weekday">quarta-feira</span> • <span data-gj="time">19h30</span></span><span>•</span><span>✝ Paróquia Matriz de São Gonçalo</span><span>•</span><span>Entrada gratuita</span><span>•</span><span>Siga @ogrupojovem</span><span>•</span><span>Traga um amigo</span><span>•</span>
+      <span>★ Estreia <span data-gj="day-month">28 de outubro</span></span><span>•</span><span><span data-gj="weekday">quarta-feira</span> • <span data-gj="time">19h30</span></span><span>•</span><span>✝ Paróquia Matriz de São Gonçalo</span><span>•</span><span>Entrada gratuita</span><span>•</span><span>Siga @ogrupojovem</span><span>•</span><span>Traga um amigo</span><span>•</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="sticky top-0 z-[70]">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 pt-3">
+    <div class="glass rounded-2xl px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between gap-3 shadow-[0_10px_40px_-15px_rgba(0,0,0,.7)]">
+      <a href="#topo" class="flex items-center gap-3 min-w-0" aria-label="Grupo Jovem — início">
+        <span class="gj-logo w-11 h-11" aria-hidden="true">
+          <span class="gj-logo-inner">
+            <span class="gj-rays"></span>
+            <svg class="gj-cross" viewBox="0 0 24 24"><rect x="10.3" y="1.5" width="3.4" height="21" rx="1.3"/><rect x="4.8" y="6.4" width="14.4" height="3.4" rx="1.3"/></svg>
+          </span>
+        </span>
+        <span class="leading-tight min-w-0">
+          <span class="block font-extrabold tracking-tight text-[15px]">GRUPO JOVEM</span>
+          <span class="block text-[10px] sm:text-[11px] tracking-[.18em] uppercase text-white/60 truncate"><span class="sm:hidden">São Gonçalo • RJ</span><span class="hidden sm:inline">Paróquia Matriz • São Gonçalo</span></span>
+        </span>
+      </a>
+      <div class="hidden lg:flex items-center gap-6 text-[13px] font-bold tracking-wide text-white/70">
+        <a href="#o-que-e" class="hover:text-[#FFC24B] transition">O encontro</a>
+        <a href="#programacao" class="hover:text-[#FFC24B] transition">Estreia</a>
+        <a href="#local" class="hover:text-[#FFC24B] transition">Local</a>
+        <a href="#galeria" class="hover:text-[#FFC24B] transition">Clima</a>
+        <a href="#faq" class="hover:text-[#FFC24B] transition">Dúvidas</a>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="#contagem" class="hidden sm:inline-flex items-center gap-2 text-[12px] font-extrabold bg-white/10 border border-white/15 rounded-full pl-3 pr-4 py-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="nav-countdown">Faltam 30 dias</span>
+        </a>
+        <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" aria-label="Instagram @ogrupojovem" class="w-10 h-10 rounded-full ig-ring p-[2px] hover:scale-110 transition-transform">
+          <span class="w-full h-full rounded-full bg-[#1a0c20] grid place-items-center"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24"><use href="#i-ig"/></svg></span>
+        </a>
+        <a href="https://wa.me/5521978796769?text=Ol%C3%A1!%20Quero%20participar%20da%20estreia%20do%20Grupo%20Jovem%20na%20Matriz%20de%20S%C3%A3o%20Gon%C3%A7alo!%20Me%20coloca%20na%20lista%20%F0%9F%99%8F%F0%9F%8E%89" target="_blank" rel="noopener" aria-label="WhatsApp" class="btn-shine inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1fb857] text-[#062b16] font-extrabold text-sm rounded-full h-10 px-3 sm:px-5 transition shadow-lg shadow-green-500/25">
+          <svg class="w-5 h-5" viewBox="0 0 24 24"><use href="#i-wa"/></svg><span class="hidden sm:inline">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="topo" class="relative min-h-[108svh] flex flex-col overflow-hidden -mt-[76px] pt-[110px]">
+  <div class="absolute inset-0">
+    <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/10024790/pexels-photo-10024790.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" class="w-full h-full object-cover opacity-70">
+      <source src="https://videos.pexels.com/video-files/30334109/13003291_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0D060F]/85 via-[#1a0b25]/55 to-[#0D060F]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_30%,rgba(255,122,0,.28),transparent_70%)]"></div>
+    <div class="absolute -left-32 top-1/3 w-[480px] h-[480px] rounded-full bg-[#7C3AED]/30 blur-[120px]"></div>
+    <div class="absolute -right-32 bottom-0 w-[520px] h-[520px] rounded-full bg-[#FF4D6D]/25 blur-[120px]"></div>
+  </div>
+
+  <!-- floating stickers -->
+  <div class="pointer-events-none absolute inset-0 z-10 hidden lg:block">
+    <div class="absolute left-[6%] top-[24%] animate-floaty" style="--r:-8deg">
+      <div class="polaroid bg-[#FFF7ED] text-[#140817] p-2 pb-3 rounded-lg shadow-2xl w-44 rotate-[-8deg]">
+        <img src="https://images.pexels.com/photos/20147026/pexels-photo-20147026.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Amigas rindo juntas" class="rounded-md h-40 w-full object-cover">
+        <p class="font-hand text-xl leading-none mt-1 text-center">amizade de verdade ♡</p>
+      </div>
+    </div>
+    <div class="absolute right-[5%] top-[30%] animate-floaty" style="--r:7deg; animation-delay:1.2s">
+      <div class="polaroid bg-[#FFF7ED] text-[#140817] p-2 pb-3 rounded-lg shadow-2xl w-48 rotate-[7deg]">
+        <img src="https://images.pexels.com/photos/36729458/pexels-photo-36729458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Violão ao redor da fogueira" class="rounded-md h-40 w-full object-cover">
+        <p class="font-hand text-xl leading-none mt-1 text-center">louvor + violão 🎸</p>
+      </div>
+    </div>
+    <div class="absolute right-[10%] bottom-[18%] animate-floaty hidden xl:block" style="--r:-5deg; animation-delay:.6s">
+      <div class="flex items-center gap-2 bg-[#140817]/70 backdrop-blur border border-white/15 rounded-full pl-2 pr-4 py-2 shadow-xl">
+        <img src="https://images.pexels.com/photos/35647507/pexels-photo-35647507.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" class="w-9 h-9 rounded-full object-cover" alt="Jovens felizes">
+        <div class="text-xs"><p class="font-extrabold">+180 jovens</p><p class="text-white/60">já confirmaram 🎉</p></div>
+        <div class="flex -space-x-2 ml-1">
+          <span class="w-6 h-6 rounded-full bg-[#FFC24B] border-2 border-[#140817] grid place-items-center text-[10px] font-black text-[#140817]">M</span>
+          <span class="w-6 h-6 rounded-full bg-[#FF4D6D] border-2 border-[#140817] grid place-items-center text-[10px] font-black">J</span>
+          <span class="w-6 h-6 rounded-full bg-[#7C3AED] border-2 border-[#140817] grid place-items-center text-[10px] font-black">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 w-full flex-1 flex flex-col items-center text-center justify-center pb-10">
+    <div class="reveal visible inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-[11px] sm:text-[13px] font-bold tracking-[.18em] uppercase">
+      <i data-lucide="sparkles" class="w-4 h-4 text-[#FFC24B]"></i>
+      grupojovem.com apresenta • encontros semanais
+      <i data-lucide="sparkles" class="w-4 h-4 text-[#FF4D6D]"></i>
+    </div>
+
+    <p class="font-hand text-[#FFC24B] text-2xl sm:text-3xl mt-6 -rotate-2">prepare o coração, chama os amigos…</p>
+    <h1 class="font-display font-black leading-[.88] mt-1 select-none">
+      <span class="block text-stroke-cream text-[19vw] sm:text-[13vw] lg:text-[10.5rem] tracking-tight">VEM AÍ</span>
+      <span class="block text-[11vw] sm:text-[7vw] lg:text-[5.2rem] italic font-light tracking-tight mt-1">o <span class="not-italic font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FFC24B] via-[#FF7A00] to-[#FF4D6D]">Grupo Jovem</span> <span class="whitespace-nowrap">que você ✦</span></span>
+      <span class="block text-[11vw] sm:text-[7vw] lg:text-[5.2rem] italic font-light tracking-tight">sempre sonhou</span>
+    </h1>
+
+    <p class="max-w-2xl text-white/75 text-[15px] sm:text-lg leading-relaxed mt-6">
+      <strong class="text-white"><span data-gj="todo-cap">Toda quarta</span> à noite</strong>, jovens católicos de 14 a 35 anos vão se encontrar na <strong class="text-white">Paróquia Matriz de São Gonçalo</strong> para <strong class="text-[#FFC24B]">louvar alto</strong>, rir até doer a barriga, partilhar a vida e terminar com <strong class="text-white">pizza & abraço</strong>. A estreia é <strong class="text-white"><span data-gj="weekday">quarta-feira</span>, <span data-gj="day-month">28 de outubro</span>, às <span data-gj="time">19h30</span></strong> — e seu nome já pode estar na lista.
+    </p>
+
+    <!-- countdown -->
+    <div id="contagem" class="mt-8 w-full max-w-3xl scroll-mt-32">
+      <div class="glass rounded-3xl p-4 sm:p-6 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(60%_100%_at_50%_0%,rgba(255,194,75,.18),transparent)]"></div>
+        <p class="relative text-[11px] font-extrabold tracking-[.28em] uppercase text-[#FFC24B]">Contagem regressiva para a grande estreia</p>
+        <div class="relative grid grid-cols-4 gap-2 sm:gap-4 mt-4">
+          <div class="rounded-2xl bg-[#140817]/70 border border-white/10 py-4 sm:py-5">
+            <p id="cd-d" class="font-display font-black text-4xl sm:text-6xl tabular-nums">30</p>
+            <p class="text-[11px] font-bold tracking-[.22em] uppercase text-white/50 mt-1">dias</p>
+          </div>
+          <div class="rounded-2xl bg-[#140817]/70 border border-white/10 py-4 sm:py-5">
+            <p id="cd-h" class="font-display font-black text-4xl sm:text-6xl tabular-nums text-[#FFC24B]">00</p>
+            <p class="text-[11px] font-bold tracking-[.22em] uppercase text-white/50 mt-1">horas</p>
+          </div>
+          <div class="rounded-2xl bg-[#140817]/70 border border-white/10 py-4 sm:py-5">
+            <p id="cd-m" class="font-display font-black text-4xl sm:text-6xl tabular-nums">00</p>
+            <p class="text-[11px] font-bold tracking-[.22em] uppercase text-white/50 mt-1">min</p>
+          </div>
+          <div class="rounded-2xl bg-gradient-to-br from-[#FFC24B] to-[#FF4D6D] text-[#140817] py-4 sm:py-5 shadow-lg shadow-orange-500/30">
+            <p id="cd-s" class="font-display font-black text-4xl sm:text-6xl tabular-nums">00</p>
+            <p class="text-[11px] font-bold tracking-[.22em] uppercase mt-1 opacity-70">seg</p>
+          </div>
+        </div>
+        <p class="relative text-xs text-white/60 mt-3 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Paróquia Matriz de São Gonçalo • <span class="capitalize" data-gj="wd-short">qua</span>, <span data-gj="ddmm">28/10</span> • <span data-gj="time">19h30</span> • entrada gratuita</p>
+      </div>
+      <p class="js-sjudas mt-3 inline-flex items-center gap-2 text-[12px] sm:text-[13px] font-bold text-white/85 bg-[#FFC24B]/10 border border-[#FFC24B]/25 rounded-full px-4 py-1.5">🙏 28/10 é dia de São Judas Tadeu — o santo das causas impossíveis!</p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center gap-3 mt-7 w-full sm:w-auto">
+      <a href="#lista" class="btn-shine w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#FFC24B] hover:bg-[#ffcf6b] text-[#140817] font-extrabold rounded-full px-8 py-4 text-[15px] shadow-[0_20px_60px_-15px_rgba(255,194,75,.6)] transition hover:-translate-y-0.5">
+        <i data-lucide="ticket" class="w-5 h-5"></i> Quero estar na estreia
+      </a>
+      <a href="https://wa.me/5521978796769?text=Ol%C3%A1!%20Quero%20participar%20da%20estreia%20do%20Grupo%20Jovem%20na%20Matriz%20de%20S%C3%A3o%20Gon%C3%A7alo!%20Me%20coloca%20na%20lista%20%F0%9F%99%8F%F0%9F%8E%89" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 glass hover:bg-white/15 font-extrabold rounded-full px-8 py-4 text-[15px] transition hover:-translate-y-0.5">
+        <svg class="w-5 h-5 text-[#25D366]" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Chamar no WhatsApp
+      </a>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-2 mt-6 text-[12px] font-bold">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/10 rounded-full px-3.5 py-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-[#FFC24B]"></i> 14 a 35 anos</span>
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/10 rounded-full px-3.5 py-1.5"><i data-lucide="church" class="w-3.5 h-3.5 text-[#FFC24B]"></i> 100% católico, 0% julgamento</span>
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/10 rounded-full px-3.5 py-1.5"><i data-lucide="pizza" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Sempre termina em festa</span>
+      <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 bg-gradient-to-r from-[#FA7E1E]/25 via-[#D62976]/25 to-[#962FBF]/25 border border-[#D62976]/40 hover:border-[#D62976] transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><use href="#i-ig"/></svg> @ogrupojovem</a>
+    </div>
+  </div>
+
+  <div class="relative z-20 flex justify-center pb-8">
+    <a href="#o-que-e" class="flex flex-col items-center gap-2 text-white/50 hover:text-[#FFC24B] transition text-[11px] font-bold tracking-[.25em] uppercase">
+      role pra descobrir <span class="w-10 h-10 rounded-full border border-white/20 grid place-items-center animate-bounce"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════ MARQUEE 2 ══════════ -->
+<div class="relative z-20 bg-[#140817] border-y border-white/10 py-4 overflow-hidden -rotate-[.6deg] scale-[1.02]">
+  <div class="marquee-track slow items-center text-white/80 font-display italic text-xl sm:text-2xl whitespace-nowrap">
+    <div class="flex items-center gap-10 pr-10">
+      <span>louvorzão 🎶</span><span class="text-[#FFC24B] not-italic">✦</span><span>novas amizades 🤝</span><span class="text-[#FF4D6D] not-italic">✦</span><span>adoração 🕯️</span><span class="text-[#FFC24B] not-italic">✦</span><span>terço jovem 📿</span><span class="text-[#FF4D6D] not-italic">✦</span><span>games & pizza 🍕</span><span class="text-[#FFC24B] not-italic">✦</span><span>festa da alegria 🎉</span><span class="text-[#FF4D6D] not-italic">✦</span>
+    </div>
+    <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+      <span>louvorzão 🎶</span><span class="text-[#FFC24B] not-italic">✦</span><span>novas amizades 🤝</span><span class="text-[#FF4D6D] not-italic">✦</span><span>adoração 🕯️</span><span class="text-[#FFC24B] not-italic">✦</span><span>terço jovem 📿</span><span class="text-[#FF4D6D] not-italic">✦</span><span>games & pizza 🍕</span><span class="text-[#FFC24B] not-italic">✦</span><span>festa da alegria 🎉</span><span class="text-[#FF4D6D] not-italic">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MANIFESTO ══════════ -->
+<section id="o-que-e" class="relative py-20 sm:py-28 overflow-hidden scroll-mt-24">
+  <div class="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[400px] halo pointer-events-none"></div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="reveal">
+        <p class="inline-flex items-center gap-2 text-[12px] font-extrabold tracking-[.25em] uppercase text-[#FFC24B] bg-[#FFC24B]/10 border border-[#FFC24B]/25 rounded-full px-4 py-2"><i data-lucide="heart-handshake" class="w-4 h-4"></i> o que é o grupo jovem?</p>
+        <h2 class="font-display font-black text-4xl sm:text-6xl leading-[1.02] mt-5">Não é só um encontro.<br><span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-[#FFC24B] to-[#FF4D6D]">É família. É festa. É fé viva.</span></h2>
+        <p class="text-white/70 leading-relaxed mt-6 text-[15px] sm:text-lg">Sabe aquela noite parada, rolando o feed, sentindo falta de algo maior? O <strong class="text-white">Grupo Jovem</strong> nasceu pra isso: um encontro semanal na <strong class="text-white">Paróquia Matriz de São Gonçalo</strong> onde a fé católica encontra a alegria da juventude — sem caretice, sem julgamento, com muita música, partilha verdadeira e aquele pós-encontro que ninguém quer que acabe.</p>
+        <div class="grid grid-cols-2 gap-3 mt-8">
+          <div class="rounded-2xl bg-white/[.05] border border-white/10 p-5 card-hover">
+            <p class="font-display font-black text-3xl sm:text-4xl text-[#FFC24B]">52</p>
+            <p class="text-xs font-bold text-white/60 mt-1 uppercase tracking-wider">encontros por ano.<br>Toda semana, sem falhar.</p>
+          </div>
+          <div class="rounded-2xl bg-white/[.05] border border-white/10 p-5 card-hover">
+            <p class="font-display font-black text-3xl sm:text-4xl text-[#FF4D6D]">0%</p>
+            <p class="text-xs font-bold text-white/60 mt-1 uppercase tracking-wider">julgamento.<br>Pode vir do seu jeito.</p>
+          </div>
+          <div class="rounded-2xl bg-white/[.05] border border-white/10 p-5 card-hover">
+            <p class="font-display font-black text-3xl sm:text-4xl">100%</p>
+            <p class="text-xs font-bold text-white/60 mt-1 uppercase tracking-wider">acolhimento.<br>Ninguém fica sozinho.</p>
+          </div>
+          <div class="rounded-2xl bg-gradient-to-br from-[#FFC24B] to-[#FF7A00] text-[#140817] p-5">
+            <p class="font-display font-black text-3xl sm:text-4xl">∞</p>
+            <p class="text-xs font-extrabold mt-1 uppercase tracking-wider opacity-70">amizades, risadas<br>& histórias pra contar.</p>
+          </div>
+        </div>
+        <p class="font-hand text-2xl text-white/60 mt-6 -rotate-1">“Alegrai-vos sempre no Senhor! Repito: alegrai-vos!” — Fl 4,4 ✦ nosso lema</p>
+      </div>
+      <div class="reveal reveal-d2 relative">
+        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+          <img src="https://images.pexels.com/photos/17030039/pexels-photo-17030039.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Jovens em louvor com mãos erguidas" class="rounded-2xl object-cover h-64 sm:h-80 w-full shadow-2xl">
+          <img src="https://images.pexels.com/photos/7775782/pexels-photo-7775782.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Grupo de amigos rindo ao ar livre" class="rounded-2xl object-cover h-64 sm:h-80 w-full mt-8 shadow-2xl">
+          <img src="https://images.pexels.com/photos/8718469/pexels-photo-8718469.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Terço e velas acesas na igreja" class="rounded-2xl object-cover h-56 sm:h-72 w-full -mt-8 shadow-2xl">
+          <img src="https://images.pexels.com/photos/23495575/pexels-photo-23495575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Amigos com pizza e música" class="rounded-2xl object-cover h-56 sm:h-72 w-full shadow-2xl">
+        </div>
+        <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 rotate-[-3deg] bg-[#FFC24B] text-[#140817] font-extrabold text-sm rounded-full px-6 py-3 shadow-xl flex items-center gap-2 whitespace-nowrap">
+          <i data-lucide="party-popper" class="w-4 h-4"></i> céu + festa no mesmo lugar
+        </div>
+        <div class="absolute -top-6 -right-2 sm:right-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#FF4D6D] to-[#7C3AED] grid place-items-center text-center rotate-12 shadow-xl animate-floaty">
+          <p class="text-[11px] font-black leading-tight text-white uppercase max-w-[70px]"><span data-gj="todo">toda quarta</span><br><span data-gj="time">19h30</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ O QUE VAI ROLAR ══════════ -->
+<section class="relative py-20 sm:py-24 bg-[#150a1c] border-y border-white/10 overflow-hidden">
+  <div class="absolute -top-40 left-1/4 w-[500px] h-[500px] bg-[#7C3AED]/20 blur-[130px] rounded-full pointer-events-none"></div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="font-hand text-2xl sm:text-3xl text-[#FFC24B] -rotate-2">toda semana tem…</p>
+      <h2 class="font-display font-black text-4xl sm:text-6xl leading-none mt-2">O que vai rolar <span class="italic font-light">por aqui?</span></h2>
+      <p class="text-white/60 mt-4">Um roteiro pensado pra você chegar curioso e sair flutuando — com o coração cheio e o celular cheio de contatos novos.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+      <div class="reveal rounded-3xl bg-white/[.04] border border-white/10 p-7 card-hover relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-[#FFC24B]/15 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+        <span class="w-12 h-12 rounded-2xl bg-[#FFC24B]/15 border border-[#FFC24B]/30 grid place-items-center"><i data-lucide="guitar" class="w-6 h-6 text-[#FFC24B]"></i></span>
+        <h3 class="font-extrabold text-xl mt-5">Louvorzão pra cantar alto</h3>
+        <p class="text-white/60 text-sm leading-relaxed mt-2">Banda jovem, violão, bateria e aquelas músicas que arrepiam — de Frei Gilson ao Colo de Deus. Pode chorar, pular e levantar a mão.</p>
+        <span class="inline-block mt-4 text-[11px] font-extrabold tracking-widest uppercase text-[#FFC24B]">20h • <span data-gj="todo">toda quarta</span></span>
+      </div>
+      <div class="reveal reveal-d1 rounded-3xl bg-white/[.04] border border-white/10 p-7 card-hover relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-[#FF4D6D]/15 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+        <span class="w-12 h-12 rounded-2xl bg-[#FF4D6D]/15 border border-[#FF4D6D]/30 grid place-items-center"><i data-lucide="book-heart" class="w-6 h-6 text-[#FF4D6D]"></i></span>
+        <h3 class="font-extrabold text-xl mt-5">Palavra que fala da sua vida</h3>
+        <p class="text-white/60 text-sm leading-relaxed mt-2">Temas reais: ansiedade, namoro, faculdade, família, sonhos, santidade no dia a dia. Pregação curta, direta e com humor.</p>
+        <span class="inline-block mt-4 text-[11px] font-extrabold tracking-widest uppercase text-[#FF4D6D]">oração + pregação</span>
+      </div>
+      <div class="reveal reveal-d2 rounded-3xl bg-white/[.04] border border-white/10 p-7 card-hover relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-[#7C3AED]/20 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+        <span class="w-12 h-12 rounded-2xl bg-[#7C3AED]/15 border border-[#7C3AED]/40 grid place-items-center"><i data-lucide="messages-square" class="w-6 h-6 text-violet-300"></i></span>
+        <h3 class="font-extrabold text-xl mt-5">Partilha em pequenos grupos</h3>
+        <p class="text-white/60 text-sm leading-relaxed mt-2">Rodinhas por idade pra abrir o coração, fazer amigos de verdade e descobrir que você não é o único na luta.</p>
+        <span class="inline-block mt-4 text-[11px] font-extrabold tracking-widest uppercase text-violet-300">amizade que cura</span>
+      </div>
+      <div class="reveal rounded-3xl bg-white/[.04] border border-white/10 p-7 card-hover relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-amber-200/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+        <span class="w-12 h-12 rounded-2xl bg-amber-100/10 border border-amber-200/30 grid place-items-center"><i data-lucide="flame-kindling" class="w-6 h-6 text-amber-200"></i></span>
+        <h3 class="font-extrabold text-xl mt-5">Adoração & Terço Jovem</h3>
+        <p class="text-white/60 text-sm leading-relaxed mt-2">Uma vez por mês, noite de velas, silêncio e Jesus Eucarístico. A noite que muda tudo — traga lenço.</p>
+        <span class="inline-block mt-4 text-[11px] font-extrabold tracking-widest uppercase text-amber-200">1x por mês • velas 🕯️</span>
+      </div>
+      <div class="reveal reveal-d1 rounded-3xl bg-white/[.04] border border-white/10 p-7 card-hover relative overflow-hidden group">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-emerald-400/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+        <span class="w-12 h-12 rounded-2xl bg-emerald-400/10 border border-emerald-300/30 grid place-items-center"><i data-lucide="gamepad-2" class="w-6 h-6 text-emerald-300"></i></span>
+        <h3 class="font-extrabold text-xl mt-5">Games, gincanas & missões</h3>
+        <p class="text-white/60 text-sm leading-relaxed mt-2">Quiz bíblico valendo açaí, vôlei, trilhas, retiro, festa junina, luau… Tédio aqui não tem vez.</p>
+        <span class="inline-block mt-4 text-[11px] font-extrabold tracking-widest uppercase text-emerald-300">alegria garantida</span>
+      </div>
+      <div class="reveal reveal-d2 rounded-3xl bg-gradient-to-br from-[#FFC24B] via-[#FF7A00] to-[#FF4D6D] text-[#140817] p-7 relative overflow-hidden hover:-translate-y-2 transition-transform duration-500">
+        <span class="w-12 h-12 rounded-2xl bg-[#140817]/10 grid place-items-center"><i data-lucide="pizza" class="w-6 h-6"></i></span>
+        <h3 class="font-extrabold text-xl mt-5">Pós-encontro: pizza & abraço</h3>
+        <p class="text-[#140817]/75 text-sm leading-relaxed mt-2 font-medium">Todo encontro termina com lanche partilhado, música e aquele tempo livre pra conversar até tarde. É onde nascem as amizades.</p>
+        <span class="inline-flex items-center gap-1 mt-4 text-[11px] font-black tracking-widest uppercase">o melhor momento <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ NOITE DE ESTREIA / TIMELINE ══════════ -->
+<section id="programacao" class="relative py-20 sm:py-28 overflow-hidden scroll-mt-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-start">
+      <div class="lg:sticky lg:top-28 reveal">
+        <p class="inline-flex items-center gap-2 text-[12px] font-extrabold tracking-[.25em] uppercase text-[#140817] bg-[#FFC24B] rounded-full px-4 py-2"><i data-lucide="calendar-heart" class="w-4 h-4"></i> noite de estreia</p>
+        <h2 class="font-display font-black text-4xl sm:text-6xl leading-[1] mt-5"><span data-gj="day-month-cap">28 de Outubro</span>,<br><span class="italic font-light">uma noite pra</span> nunca esquecer.</h2>
+        <p class="text-white/60 mt-5 leading-relaxed">Preparamos uma estreia de cinema na <strong class="text-white">Paróquia Matriz de São Gonçalo</strong>: tapete de boas-vindas, banda completa, surpresas, sorteios e a maior pizza da história do grupo. Chegue cedo — os 100 primeiros ganham a <strong class="text-[#FFC24B]">pulseirinha oficial do Grupo Jovem</strong>.</p>
+        <div class="js-sjudas mt-5 rounded-2xl border border-[#FFC24B]/30 bg-[#FFC24B]/[.07] p-4 flex gap-3 items-start">
+          <span class="text-2xl leading-none">🙏</span>
+          <p class="text-sm text-white/75 leading-relaxed"><strong class="text-[#FFC24B]">Detalhe lindo:</strong> 28 de outubro é dia de <strong class="text-white">São Judas Tadeu</strong>, o santo das causas impossíveis. A gente começa entregando tudo nas mãos dele — porque pra quem caminha junto, nada é impossível. ✨</p>
+        </div>
+        <div class="mt-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+          <img src="https://images.pexels.com/photos/36117935/pexels-photo-36117935.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Multidão em noite de louvor com luzes" class="h-60 sm:h-72 w-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="flex flex-wrap gap-2 mt-5 text-[12px] font-bold">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Portas abrem às <span data-gj="doors">19h</span></span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5"><i data-lucide="gift" class="w-3.5 h-3.5 text-[#FF4D6D]"></i> Sorteios & brindes</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5"><i data-lucide="badge-check" class="w-3.5 h-3.5 text-emerald-300"></i> Entrada gratuita</span>
+          <a href="#local" class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 hover:border-[#FFC24B] transition"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Matriz de São Gonçalo</a>
+        </div>
+      </div>
+      <div class="relative pl-8 sm:pl-10">
+        <div class="absolute left-[11px] sm:left-[13px] top-2 bottom-2 w-[2px] dotted-line"></div>
+        <div class="space-y-4">
+          <div class="reveal relative rounded-2xl bg-white/[.05] border border-white/10 p-5 sm:p-6 card-hover">
+            <span class="absolute -left-8 sm:-left-10 top-6 w-6 h-6 rounded-full bg-[#FFC24B] border-4 border-[#0D060F] shadow-[0_0_0_2px_#FFC24B]"></span>
+            <p class="text-[#FFC24B] font-extrabold text-sm tracking-widest">19H30 — RECEPÇÃO FESTA</p>
+            <h3 class="font-extrabold text-lg mt-1">Tapete vermelho + som + fotos</h3>
+            <p class="text-white/60 text-sm mt-1">Equipe de acolhida te recebe pelo nome no pátio da Matriz, foto no painel “VEM AÍ”, pulseirinha e cartão de boas-vindas. Ninguém entra anônimo.</p>
+          </div>
+          <div class="reveal relative rounded-2xl bg-white/[.05] border border-white/10 p-5 sm:p-6 card-hover">
+            <span class="absolute -left-8 sm:-left-10 top-6 w-6 h-6 rounded-full bg-[#FF7A00] border-4 border-[#0D060F] shadow-[0_0_0_2px_#FF7A00]"></span>
+            <p class="text-[#FF7A00] font-extrabold text-sm tracking-widest">20H00 — LOUVORZÃO DE ESTREIA</p>
+            <h3 class="font-extrabold text-lg mt-1">Banda completa + 40 min sem parar</h3>
+            <p class="text-white/60 text-sm mt-1">Aquele set list que mistura adoração e alegria. Prepare a voz — e o coração.</p>
+          </div>
+          <div class="reveal relative rounded-2xl bg-white/[.05] border border-white/10 p-5 sm:p-6 card-hover">
+            <span class="absolute -left-8 sm:-left-10 top-6 w-6 h-6 rounded-full bg-[#FF4D6D] border-4 border-[#0D060F] shadow-[0_0_0_2px_#FF4D6D]"></span>
+            <p class="text-[#FF4D6D] font-extrabold text-sm tracking-widest">20H45 — PALAVRA: “RECOMEÇAR”</p>
+            <h3 class="font-extrabold text-lg mt-1">Uma mensagem pra quem quer vida nova</h3>
+            <p class="text-white/60 text-sm mt-1">15 minutos que parecem conversa com amigo — sobre recomeços, perdão e o plano de Deus pra sua juventude.</p>
+          </div>
+          <div class="reveal relative rounded-2xl bg-white/[.05] border border-white/10 p-5 sm:p-6 card-hover">
+            <span class="absolute -left-8 sm:-left-10 top-6 w-6 h-6 rounded-full bg-violet-400 border-4 border-[#0D060F] shadow-[0_0_0_2px_#a78bfa]"></span>
+            <p class="text-violet-300 font-extrabold text-sm tracking-widest">21H10 — DINÂMICA + SORTEIOS</p>
+            <h3 class="font-extrabold text-lg mt-1">Caça-amigos, quiz e prêmios</h3>
+            <p class="text-white/60 text-sm mt-1">Brincadeira pra quebrar o gelo, sorteio de camisetas, terços e vale-açaí. Risada garantida.</p>
+          </div>
+          <div class="reveal relative rounded-2xl bg-gradient-to-br from-[#FFC24B]/15 to-[#FF4D6D]/15 border border-[#FFC24B]/30 p-5 sm:p-6">
+            <span class="absolute -left-8 sm:-left-10 top-6 w-6 h-6 rounded-full bg-emerald-400 border-4 border-[#0D060F] shadow-[0_0_0_2px_#34d399]" style="animation:pulse-glow 2s infinite"></span>
+            <p class="text-[#FFC24B] font-extrabold text-sm tracking-widest">21H40 — PIZZA DE ESTREIA 🍕</p>
+            <h3 class="font-extrabold text-lg mt-1">A maior partilha de pizza do ano</h3>
+            <p class="text-white/60 text-sm mt-1">Lanche comunitário gratuito na estreia, música acústica e tempo livre. É aqui que a amizade acontece de verdade.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LOCAL ══════════ -->
+<section id="local" class="relative py-20 sm:py-28 bg-[#150a1c] border-y border-white/10 overflow-hidden scroll-mt-24">
+  <div class="absolute inset-0 pointer-events-none">
+    <img src="https://images.pexels.com/photos/8718469/pexels-photo-8718469.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" class="w-full h-full object-cover opacity-[.06]">
+    <div class="absolute -left-40 bottom-0 w-[520px] h-[520px] rounded-full bg-[#FFC24B]/10 blur-[130px]"></div>
+  </div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-14 items-center">
+      <div class="reveal">
+        <p class="inline-flex items-center gap-2 text-[12px] font-extrabold tracking-[.25em] uppercase text-[#FFC24B] bg-[#FFC24B]/10 border border-[#FFC24B]/25 rounded-full px-4 py-2"><i data-lucide="map-pin" class="w-4 h-4"></i> onde vai ser</p>
+        <h2 class="font-display font-black text-4xl sm:text-6xl leading-[1.02] mt-5">Na casa de Deus,<br><span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-[#FFC24B] to-[#FF4D6D]">no coração de São Gonçalo.</span></h2>
+        <p class="text-white/70 leading-relaxed mt-5 text-[15px] sm:text-lg">O Grupo Jovem nasce na <strong class="text-white">Paróquia Matriz de São Gonçalo</strong> — a igreja onde, segundo muitos historiadores, a própria cidade começou. Um lugar histórico e sagrado que agora vai ficar ainda mais cheio de vida: louvor, risada e jovens de toda a região. ✨</p>
+
+        <div class="mt-7 rounded-2xl bg-white/[.05] border border-white/10 p-5 flex gap-4 items-start">
+          <span class="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFC24B] to-[#FF4D6D] grid place-items-center text-[#140817]"><i data-lucide="church" class="w-6 h-6"></i></span>
+          <div>
+            <p class="font-extrabold text-lg leading-tight">Paróquia Matriz de São Gonçalo</p>
+            <p class="text-[#FFC24B] text-[11px] font-bold tracking-wider uppercase mt-1">Igreja Matriz de São Gonçalo do Amarante</p>
+            <p class="text-white/60 text-sm mt-2 leading-relaxed">Alameda Pio XII, 86 – Centro (Zé Garoto)<br>São Gonçalo – RJ • CEP 24440-400</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2.5 mt-5">
+          <a href="https://www.google.com/maps/search/?api=1&query=Igreja%20Matriz%20de%20S%C3%A3o%20Gon%C3%A7alo%20de%20Amarante%2C%20Alameda%20Pio%20XII%2C%2086%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-[#FFC24B] hover:bg-[#ffcf6b] text-[#140817] font-extrabold text-sm rounded-full px-5 py-3 hover:-translate-y-0.5 transition"><i data-lucide="map" class="w-4 h-4"></i> Abrir no Google Maps</a>
+          <a href="https://waze.com/ul?ll=-22.828148,-43.053042&navigate=yes" target="_blank" rel="noopener" class="inline-flex items-center gap-2 glass hover:bg-white/15 font-extrabold text-sm rounded-full px-5 py-3 hover:-translate-y-0.5 transition"><i data-lucide="navigation" class="w-4 h-4 text-sky-300"></i> Ir com Waze</a>
+          <a href="https://wa.me/5521978796769?text=Ol%C3%A1!%20Vou%20na%20estreia%20do%20Grupo%20Jovem%20e%20queria%20saber%20sobre%20carona%20solid%C3%A1ria%20at%C3%A9%20a%20Matriz%20de%20S%C3%A3o%20Gon%C3%A7alo%20%F0%9F%9A%97%F0%9F%99%8F" target="_blank" rel="noopener" class="inline-flex items-center gap-2 glass hover:bg-white/15 font-extrabold text-sm rounded-full px-5 py-3 hover:-translate-y-0.5 transition"><i data-lucide="car" class="w-4 h-4 text-[#25D366]"></i> Quero carona solidária</a>
+        </div>
+
+        <p class="mt-10 text-[11px] font-extrabold tracking-[.28em] uppercase text-white/40">você sabia?</p>
+        <div class="grid sm:grid-cols-2 gap-3 mt-3">
+          <div class="rounded-2xl bg-white/[.04] border border-white/10 p-4 card-hover">
+            <p class="font-display font-black text-2xl text-[#FFC24B]">1643</p>
+            <p class="text-sm text-white/60 mt-1">Ano em que a antiga capela virou paróquia. São <strong class="text-white">quase 400 anos</strong> de fé no mesmo chão.</p>
+          </div>
+          <div class="rounded-2xl bg-white/[.04] border border-white/10 p-4 card-hover">
+            <p class="font-display font-black text-2xl text-[#FF4D6D]">Berço da cidade</p>
+            <p class="text-sm text-white/60 mt-1">Muitos historiadores apontam a Matriz como o <strong class="text-white">marco de origem</strong> de São Gonçalo.</p>
+          </div>
+          <div class="rounded-2xl bg-white/[.04] border border-white/10 p-4 card-hover">
+            <p class="font-display font-black text-2xl text-violet-300">Santo violeiro 🎸</p>
+            <p class="text-sm text-white/60 mt-1">A tradição popular conta que <strong class="text-white">São Gonçalo tocava viola e dançava</strong> pra aproximar o povo de Deus. Festa com fé é tradição da casa! (e dizem que ele é casamenteiro 👀)</p>
+          </div>
+          <div class="rounded-2xl bg-white/[.04] border border-white/10 p-4 card-hover">
+            <p class="font-display font-black text-2xl text-emerald-300">Via Sacra</p>
+            <p class="text-sm text-white/60 mt-1">Do pátio da igreja, as estações da <strong class="text-white">Via Sacra</strong> sobem até o cruzeiro no morro próximo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2 relative pb-8">
+        <div class="relative rounded-[1.75rem] overflow-hidden border border-white/15 shadow-2xl bg-[#1d0e26]">
+          <iframe title="Mapa — Paróquia Matriz de São Gonçalo" src="https://maps.google.com/maps?q=Igreja%20Matriz%20de%20S%C3%A3o%20Gon%C3%A7alo%20de%20Amarante%2C%20Alameda%20Pio%20XII%2C%2086%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ&t=&z=16&ie=UTF8&iwloc=&output=embed" class="map-dark block w-full h-[360px] sm:h-[480px] border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <div class="pointer-events-none absolute left-4 top-4">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-[#140817]/80 backdrop-blur border border-white/15 px-4 py-2 text-xs font-extrabold"><span class="w-2 h-2 rounded-full bg-[#FF4D6D] animate-pulse"></span> Paróquia Matriz • São Gonçalo – RJ</span>
+          </div>
+        </div>
+        <div class="absolute -bottom-2 left-4 right-4 sm:left-auto sm:right-6 sm:w-80 rounded-2xl bg-gradient-to-br from-[#FFC24B] to-[#FF7A00] text-[#140817] p-4 shadow-2xl rotate-[-2deg] flex items-center gap-3">
+          <span class="shrink-0 w-14 h-14 rounded-xl bg-[#140817] text-[#FFC24B] grid place-items-center text-center leading-none">
+            <span><span class="block text-xl font-black" data-gj="day">28</span><span class="block text-[10px] font-bold uppercase tracking-wider mt-0.5" data-gj="mon">out</span></span>
+          </span>
+          <div>
+            <p class="text-[10px] font-black tracking-[.22em] uppercase opacity-70">noite de estreia</p>
+            <p class="font-extrabold leading-tight"><span data-gj="weekday-cap">Quarta-feira</span> • <span data-gj="time">19h30</span></p>
+            <p class="text-xs font-semibold opacity-75">Portas abrem às <span data-gj="doors">19h</span> • entrada gratuita</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GALERIA ══════════ -->
+<section id="galeria" class="relative py-20 sm:py-24 overflow-hidden scroll-mt-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 reveal">
+      <div>
+        <p class="font-hand text-2xl sm:text-3xl text-[#FFC24B] -rotate-1">sente o clima…</p>
+        <h2 class="font-display font-black text-4xl sm:text-6xl leading-none">Céu <span class="italic font-light text-white/60">+</span> festa <span class="italic font-light text-white/60">+</span> amigos</h2>
+      </div>
+      <p class="text-white/55 text-sm max-w-sm">Um gostinho do que te espera toda semana: mãos pro alto, risada solta, vela acesa e violão depois da pizza.</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-10 auto-rows-[160px] sm:auto-rows-[210px]">
+      <figure class="reveal relative rounded-2xl overflow-hidden group row-span-2">
+        <img src="https://images.pexels.com/photos/10024790/pexels-photo-10024790.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Show de louvor com mãos erguidas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">🎶 louvor que arrepia</figcaption>
+      </figure>
+      <figure class="reveal reveal-d1 relative rounded-2xl overflow-hidden group">
+        <img src="https://images.pexels.com/photos/10423758/pexels-photo-10423758.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Amigos sorrindo juntos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">🤗 chega mais!</figcaption>
+      </figure>
+      <figure class="reveal reveal-d2 relative rounded-2xl overflow-hidden group row-span-2">
+        <img src="https://images.pexels.com/photos/21365111/pexels-photo-21365111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Jovens com velas e terço" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">🕯️ fé que ilumina</figcaption>
+      </figure>
+      <figure class="reveal reveal-d3 relative rounded-2xl overflow-hidden group">
+        <img src="https://images.pexels.com/photos/36714236/pexels-photo-36714236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Piquenique com amigos e música" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">☀️ rolês juntos</figcaption>
+      </figure>
+      <figure class="reveal relative rounded-2xl overflow-hidden group">
+        <img src="https://images.pexels.com/photos/36766092/pexels-photo-36766092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Amigos tocando violão" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">🎸 pós-pizza acústico</figcaption>
+      </figure>
+      <figure class="reveal reveal-d1 relative rounded-2xl overflow-hidden group">
+        <img src="https://images.pexels.com/photos/17030074/pexels-photo-17030074.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Adoração com multidão" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">🙌 adoração</figcaption>
+      </figure>
+      <figure class="reveal reveal-d2 relative rounded-2xl overflow-hidden group">
+        <img src="https://images.pexels.com/photos/8674866/pexels-photo-8674866.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Acendendo velas na igreja" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">✨ um pedido, uma vela</figcaption>
+      </figure>
+      <figure class="reveal reveal-d3 relative rounded-2xl overflow-hidden group">
+        <img src="https://images.pexels.com/photos/7219090/pexels-photo-7219090.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Igreja com bíblia no altar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 text-sm font-bold">⛪ casa de todos</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DEPOIMENTOS ══════════ -->
+<section class="relative py-20 sm:py-24 bg-[#150a1c] border-y border-white/10 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="text-center reveal">
+      <p class="font-hand text-2xl sm:text-3xl text-[#FFC24B]">quem já viveu um grupo jovem, sabe…</p>
+      <h2 class="font-display font-black text-4xl sm:text-6xl">Por que você <span class="italic font-light">vai amar?</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4 mt-12">
+      <blockquote class="reveal rounded-3xl bg-white/[.05] border border-white/10 p-7 card-hover flex flex-col">
+        <div class="flex gap-1 text-[#FFC24B]">★★★★★</div>
+        <p class="font-display italic text-lg leading-snug mt-4 flex-1">“Cheguei sozinha e morrendo de vergonha. Em 10 minutos eu já tinha 5 amigas e um apelido. Hoje é o dia mais esperado da minha semana.”</p>
+        <footer class="flex items-center gap-3 mt-6 pt-5 border-t border-white/10">
+          <img src="https://images.pexels.com/photos/4723138/pexels-photo-4723138.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Maria" class="w-11 h-11 rounded-full object-cover">
+          <div><p class="font-extrabold text-sm">Maria, 19 anos</p><p class="text-white/50 text-xs">veio por curiosidade, ficou por amor</p></div>
+        </footer>
+      </blockquote>
+      <blockquote class="reveal reveal-d1 rounded-3xl bg-gradient-to-b from-[#FFC24B]/15 to-transparent border border-[#FFC24B]/30 p-7 card-hover flex flex-col relative">
+        <span class="absolute -top-3 left-7 bg-[#FFC24B] text-[#140817] text-[11px] font-black tracking-widest uppercase rounded-full px-3 py-1">favorito ♡</span>
+        <div class="flex gap-1 text-[#FFC24B]">★★★★★</div>
+        <p class="font-display italic text-lg leading-snug mt-4 flex-1">“Eu tava afastado de Deus há anos. O louvor me quebrou, a partilha me abraçou. Voltei pra Igreja — e trouxe meu irmão junto.”</p>
+        <footer class="flex items-center gap-3 mt-6 pt-5 border-t border-white/10">
+          <img src="https://images.pexels.com/photos/28239544/pexels-photo-28239544.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="João Pedro" class="w-11 h-11 rounded-full object-cover">
+          <div><p class="font-extrabold text-sm">João Pedro, 24 anos</p><p class="text-white/50 text-xs">reencontrou a fé num grupo jovem</p></div>
+        </footer>
+      </blockquote>
+      <blockquote class="reveal reveal-d2 rounded-3xl bg-white/[.05] border border-white/10 p-7 card-hover flex flex-col">
+        <div class="flex gap-1 text-[#FFC24B]">★★★★★</div>
+        <p class="font-display italic text-lg leading-snug mt-4 flex-1">“Melhor que rolê: música boa, gente boa, e ainda saio em paz. Minha mãe ama, minha fé ama, eu amo. Só vem!”</p>
+        <footer class="flex items-center gap-3 mt-6 pt-5 border-t border-white/10">
+          <img src="https://images.pexels.com/photos/35647507/pexels-photo-35647507.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Ana e amigas" class="w-11 h-11 rounded-full object-cover">
+          <div><p class="font-extrabold text-sm">Ana, 17 anos</p><p class="text-white/50 text-xs">levou 6 amigas da escola</p></div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INSTAGRAM ══════════ -->
+<section id="instagram" class="relative py-20 sm:py-24 overflow-hidden scroll-mt-24">
+  <div class="absolute right-0 top-10 w-[480px] h-[480px] rounded-full bg-[#D62976]/20 blur-[130px] pointer-events-none"></div>
+  <div class="absolute left-0 bottom-0 w-[400px] h-[400px] rounded-full bg-[#FA7E1E]/10 blur-[120px] pointer-events-none"></div>
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal rounded-[2rem] p-[2px] ig-ring shadow-[0_40px_120px_-40px_rgba(214,41,118,.6)]">
+      <div class="rounded-[calc(2rem_-_2px)] bg-[#120813] p-6 sm:p-10 grid lg:grid-cols-[1fr_1.15fr] gap-10 items-center">
+        <div>
+          <p class="font-hand text-2xl sm:text-3xl text-[#FFC24B] -rotate-1">bora seguir? 📲</p>
+          <div class="flex items-center gap-4 mt-3">
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 rounded-full p-[3px] ig-ring" aria-label="Perfil @ogrupojovem">
+              <span class="block rounded-full p-[3px] bg-[#120813]">
+                <span class="block w-[72px] h-[72px]">
+                  <span class="gj-logo-inner">
+                    <span class="gj-rays"></span>
+                    <svg class="gj-cross" viewBox="0 0 24 24"><rect x="10.3" y="1.5" width="3.4" height="21" rx="1.3"/><rect x="4.8" y="6.4" width="14.4" height="3.4" rx="1.3"/></svg>
+                  </span>
+                </span>
+              </span>
+            </a>
+            <div class="min-w-0">
+              <p class="font-extrabold text-xl sm:text-2xl truncate">@ogrupojovem</p>
+              <p class="text-white/55 text-sm">Grupo Jovem • Paróquia Matriz de São Gonçalo</p>
+              <div class="flex gap-4 mt-2 text-sm">
+                <p><strong>52</strong> <span class="text-white/50">encontros/ano</span></p>
+                <p><strong>∞</strong> <span class="text-white/50">amizades</span></p>
+                <p><strong>1</strong> <span class="text-white/50">fé</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 text-[15px] leading-relaxed text-white/80 space-y-0.5">
+            <p>✝️ Jovens católicos • encontros semanais</p>
+            <p>🎶 Louvor • amizade • festa • pizza</p>
+            <p>📍 Paróquia Matriz de São Gonçalo – RJ</p>
+            <p>🎉 Estreia <span data-gj="ddmm">28/10</span> às <span data-gj="time">19h30</span> — vem com a gente!</p>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="btn-shine inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-extrabold text-white bg-gradient-to-r from-[#FA7E1E] via-[#D62976] to-[#962FBF] shadow-lg shadow-pink-600/30 hover:-translate-y-0.5 transition">
+              <svg class="w-5 h-5" viewBox="0 0 24 24"><use href="#i-ig"/></svg> Seguir @ogrupojovem
+            </a>
+            <button id="copy-ig" type="button" class="inline-flex items-center gap-2 rounded-full px-5 py-3.5 font-bold glass hover:bg-white/15 transition">
+              <i data-lucide="copy" class="w-4 h-4"></i> <span class="lbl">Copiar @</span>
+            </button>
+          </div>
+          <p class="text-xs text-white/45 mt-4 flex items-center gap-1.5"><i data-lucide="bell-ring" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Ative as notificações — os bastidores da estreia saem primeiro por lá.</p>
+        </div>
+
+        <div class="min-w-0">
+          <div class="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar pb-2">
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 text-center group">
+              <span class="block w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full p-[2.5px] ig-ring group-hover:scale-105 transition-transform"><span class="w-full h-full rounded-full border-[3px] border-[#120813] bg-gradient-to-br from-[#FFC24B] to-[#FF4D6D] grid place-items-center text-[#140817] font-display font-black text-[11px] leading-none">VEM<br>AÍ</span></span>
+              <span class="block text-[11px] font-bold text-white/70 mt-1.5">Estreia</span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 text-center group">
+              <span class="block w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full p-[2.5px] ig-ring group-hover:scale-105 transition-transform"><img src="https://images.pexels.com/photos/10024790/pexels-photo-10024790.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Louvor" class="w-full h-full rounded-full object-cover border-[3px] border-[#120813]"></span>
+              <span class="block text-[11px] font-bold text-white/70 mt-1.5">Louvor</span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 text-center group">
+              <span class="block w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full p-[2.5px] ig-ring group-hover:scale-105 transition-transform"><img src="https://images.pexels.com/photos/10423758/pexels-photo-10423758.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Amigos" class="w-full h-full rounded-full object-cover border-[3px] border-[#120813]"></span>
+              <span class="block text-[11px] font-bold text-white/70 mt-1.5">Amigos</span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 text-center group">
+              <span class="block w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full p-[2.5px] ig-ring group-hover:scale-105 transition-transform"><img src="https://images.pexels.com/photos/8718469/pexels-photo-8718469.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Adoração" class="w-full h-full rounded-full object-cover border-[3px] border-[#120813]"></span>
+              <span class="block text-[11px] font-bold text-white/70 mt-1.5">Adoração</span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 text-center group">
+              <span class="block w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full p-[2.5px] ig-ring group-hover:scale-105 transition-transform"><img src="https://images.pexels.com/photos/23495575/pexels-photo-23495575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Pizza" class="w-full h-full rounded-full object-cover border-[3px] border-[#120813]"></span>
+              <span class="block text-[11px] font-bold text-white/70 mt-1.5">Pizza 🍕</span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="shrink-0 text-center group">
+              <span class="block w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full p-[2.5px] ig-ring group-hover:scale-105 transition-transform"><img src="https://images.pexels.com/photos/36766092/pexels-photo-36766092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Bastidores" class="w-full h-full rounded-full object-cover border-[3px] border-[#120813]"></span>
+              <span class="block text-[11px] font-bold text-white/70 mt-1.5">Bastidores</span>
+            </a>
+          </div>
+          <div class="grid grid-cols-3 gap-1.5 sm:gap-2 mt-5">
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="relative aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-[#FFC24B] via-[#FF7A00] to-[#FF4D6D] text-[#140817] grid place-items-center text-center group">
+              <span><span class="block font-display font-black text-2xl sm:text-4xl leading-none">VEM AÍ</span><span class="block font-extrabold text-[10px] sm:text-xs tracking-widest mt-1"><span data-gj="ddmm">28/10</span> • <span data-gj="time">19h30</span></span></span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="relative aspect-square overflow-hidden rounded-lg group">
+              <img src="https://images.pexels.com/photos/17030063/pexels-photo-17030063.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Jovens louvando" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition grid place-items-center"><span class="flex items-center gap-1 font-bold text-sm"><i data-lucide="heart" class="w-4 h-4 fill-white"></i> amei</span></span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="relative aspect-square overflow-hidden rounded-lg group">
+              <img src="https://images.pexels.com/photos/36729929/pexels-photo-36729929.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Amigos com violão" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition grid place-items-center"><span class="flex items-center gap-1 font-bold text-sm"><i data-lucide="heart" class="w-4 h-4 fill-white"></i> amei</span></span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="relative aspect-square overflow-hidden rounded-lg group">
+              <img src="https://images.pexels.com/photos/20147026/pexels-photo-20147026.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800" alt="Amigas rindo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition grid place-items-center"><span class="flex items-center gap-1 font-bold text-sm"><i data-lucide="heart" class="w-4 h-4 fill-white"></i> amei</span></span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="relative aspect-square overflow-hidden rounded-lg group">
+              <img src="https://images.pexels.com/photos/21365111/pexels-photo-21365111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Velas e terço" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition grid place-items-center"><span class="flex items-center gap-1 font-bold text-sm"><i data-lucide="heart" class="w-4 h-4 fill-white"></i> amei</span></span>
+            </a>
+            <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="relative aspect-square overflow-hidden rounded-lg group">
+              <img src="https://images.pexels.com/photos/17030042/pexels-photo-17030042.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Jovens em adoração" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition grid place-items-center"><span class="flex items-center gap-1 font-bold text-sm"><i data-lucide="heart" class="w-4 h-4 fill-white"></i> amei</span></span>
+            </a>
+          </div>
+          <p class="text-xs text-white/40 mt-3 text-center">em breve no feed: bastidores, louvores e as fotos da galera ✨</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INGRESSO / LISTA ══════════ -->
+<section id="lista" class="relative py-20 sm:py-28 overflow-hidden scroll-mt-24">
+  <div class="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_40%,rgba(255,122,0,.22),transparent_70%)] pointer-events-none"></div>
+  <div class="relative mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="reveal relative rounded-[2rem] overflow-hidden border border-[#FFC24B]/30 bg-gradient-to-b from-[#1d0e26] to-[#120813] shadow-[0_40px_120px_-30px_rgba(255,122,0,.4)]">
+      <div class="grid md:grid-cols-[1fr_1.1fr]">
+        <!-- ticket left -->
+        <div class="ticket-notch md:border-r-2 md:border-dashed md:border-white/20 p-8 sm:p-10 bg-gradient-to-br from-[#FFC24B] via-[#FF9a2e] to-[#FF4D6D] text-[#140817] relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-white/20 blur-2xl"></div>
+          <div class="absolute w-40 h-40 rounded-full border-[14px] border-[#140817]/10 -left-10 -bottom-10" style="animation:spin-slow 18s linear infinite"></div>
+          <p class="relative text-[11px] font-black tracking-[.3em] uppercase opacity-70">★ ingresso da estreia ★</p>
+          <h3 class="relative font-display font-black text-4xl sm:text-5xl leading-[.95] mt-3">SEU LUGAR<br>NA FESTA<br><span class="italic font-light">está guardado</span></h3>
+          <div class="relative mt-6 space-y-2.5 text-sm font-bold">
+            <p class="flex items-center gap-2"><i data-lucide="calendar-days" class="w-4 h-4 shrink-0"></i> <span><span data-gj="weekday-cap">Quarta-feira</span>, <span data-gj="day-month">28 de outubro</span> de <span data-gj="year">2026</span></span></p>
+            <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 shrink-0"></i> <span><span data-gj="time">19h30</span> — portas abrem às <span data-gj="doors">19h</span></span></p>
+            <p class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 shrink-0 mt-0.5"></i> <span>Paróquia Matriz de São Gonçalo<br><span class="font-semibold opacity-75">Alameda Pio XII, 86 – Centro, São Gonçalo</span></span></p>
+            <p class="flex items-center gap-2"><i data-lucide="ticket-check" class="w-4 h-4 shrink-0"></i> <span>Entrada gratuita • traga 1 amigo</span></p>
+            <p class="flex items-center gap-2"><i data-lucide="shirt" class="w-4 h-4 shrink-0"></i> <span>100 primeiros ganham pulseirinha oficial</span></p>
+          </div>
+          <div class="relative mt-7 inline-flex items-center gap-3 bg-[#140817] text-[#FFC24B] rounded-2xl px-5 py-4">
+            <div>
+              <p class="text-[10px] font-bold tracking-[.25em] uppercase opacity-60">vagas na estreia</p>
+              <div class="h-2 w-44 bg-white/15 rounded-full mt-2 overflow-hidden"><div id="vagas-bar" class="h-full w-[72%] bg-gradient-to-r from-[#FFC24B] to-[#FF4D6D] rounded-full transition-all duration-1000"></div></div>
+              <p class="text-xs font-bold mt-1.5"><span id="vagas-num">216</span> de 300 lugares já reservados!</p>
+            </div>
+            <i data-lucide="flame" class="w-8 h-8"></i>
+          </div>
+          <div class="relative mt-4">
+            <a href="#" target="_blank" rel="noopener" class="js-gcal inline-flex items-center gap-1.5 text-xs font-extrabold underline underline-offset-4 decoration-2 hover:opacity-70 transition"><i data-lucide="calendar-plus" class="w-4 h-4"></i> Salvar na minha agenda</a>
+          </div>
+        </div>
+        <!-- form right -->
+        <div class="p-8 sm:p-10">
+          <h3 class="font-extrabold text-2xl">Entre pra lista da estreia 🎉</h3>
+          <p class="text-white/55 text-sm mt-1.5">Preencha e receba tudo no WhatsApp: lembrete, detalhes da noite e um recado carinhoso da equipe.</p>
+          <form id="lead-form" class="mt-6 space-y-3">
+            <div>
+              <label for="lead-nome" class="text-xs font-bold tracking-wider uppercase text-white/50">Seu nome</label>
+              <input id="lead-nome" required type="text" autocomplete="name" placeholder="Ex.: Maria Clara" class="mt-1.5 w-full rounded-xl bg-white/[.06] border border-white/15 px-4 py-3.5 text-[15px] placeholder:text-white/30 outline-none focus:border-[#FFC24B] focus:ring-2 focus:ring-[#FFC24B]/30 transition">
+            </div>
+            <div>
+              <label for="lead-fone" class="text-xs font-bold tracking-wider uppercase text-white/50">Seu WhatsApp</label>
+              <input id="lead-fone" required type="tel" inputmode="tel" autocomplete="tel" placeholder="(21) 9 0000-0000" class="mt-1.5 w-full rounded-xl bg-white/[.06] border border-white/15 px-4 py-3.5 text-[15px] placeholder:text-white/30 outline-none focus:border-[#FFC24B] focus:ring-2 focus:ring-[#FFC24B]/30 transition">
+            </div>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <p class="w-full text-xs font-bold tracking-wider uppercase text-white/50">Sua faixa</p>
+              <button type="button" data-idade="14–17" class="idade-btn text-xs font-bold border border-white/15 rounded-full px-4 py-2 hover:border-[#FFC24B] transition">14–17</button>
+              <button type="button" data-idade="18–25" class="idade-btn tab-active text-xs font-bold border border-white/15 rounded-full px-4 py-2 hover:border-[#FFC24B] transition">18–25</button>
+              <button type="button" data-idade="26–35" class="idade-btn text-xs font-bold border border-white/15 rounded-full px-4 py-2 hover:border-[#FFC24B] transition">26–35</button>
+              <button type="button" data-idade="35+ (voluntário)" class="idade-btn text-xs font-bold border border-white/15 rounded-full px-4 py-2 hover:border-[#FFC24B] transition">35+ (voluntário ♡)</button>
+            </div>
+            <button type="submit" class="btn-shine w-full inline-flex justify-center items-center gap-2 bg-[#25D366] hover:bg-[#1fb857] text-[#062b16] font-extrabold rounded-2xl px-6 py-4 text-[15px] transition hover:-translate-y-0.5 shadow-lg shadow-green-500/25">
+              <svg class="w-5 h-5" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Confirmar no WhatsApp
+            </button>
+            <p class="text-[11px] text-white/40 text-center">Ao confirmar, você autoriza o contato da equipe do Grupo Jovem. Sem spam, só alegria. 🙏</p>
+          </form>
+          <div id="lead-ok" class="hidden mt-6 rounded-2xl bg-emerald-400/10 border border-emerald-300/30 p-5 text-center">
+            <span class="mx-auto w-12 h-12 rounded-full bg-emerald-400 grid place-items-center"><i data-lucide="check" class="w-6 h-6 text-[#062b16]"></i></span>
+            <p class="font-extrabold mt-3" id="lead-ok-nome">Você está dentro! 🎉</p>
+            <p class="text-sm text-white/60 mt-1">Abrimos seu WhatsApp com a mensagem pronta — é só apertar enviar. Nos vemos <span data-gj="weekday">quarta-feira</span>, <span data-gj="ddmm">28/10</span>, na Matriz! 🙏</p>
+            <a id="lead-wa-link" href="#" target="_blank" rel="noopener" class="inline-block text-xs font-bold text-[#25D366] underline underline-offset-4 mt-2">Não abriu? Toque aqui</a>
+            <div class="grid grid-cols-2 gap-2 mt-4">
+              <a href="#" target="_blank" rel="noopener" class="js-gcal inline-flex justify-center items-center gap-1.5 text-xs font-bold bg-white/10 border border-white/15 rounded-full px-3 py-2.5 hover:bg-white/20 transition"><i data-lucide="calendar-plus" class="w-4 h-4"></i> Google Agenda</a>
+              <button type="button" class="js-ics inline-flex justify-center items-center gap-1.5 text-xs font-bold bg-white/10 border border-white/15 rounded-full px-3 py-2.5 hover:bg-white/20 transition"><i data-lucide="calendar-check" class="w-4 h-4"></i> iPhone / Outlook</button>
+              <button type="button" id="share-btn" class="inline-flex justify-center items-center gap-1.5 text-xs font-bold bg-white/10 border border-white/15 rounded-full px-3 py-2.5 hover:bg-white/20 transition"><i data-lucide="share-2" class="w-4 h-4"></i> Convidar amigo</button>
+              <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#FA7E1E] via-[#D62976] to-[#962FBF] rounded-full px-3 py-2.5 hover:brightness-110 transition"><svg class="w-4 h-4" viewBox="0 0 24 24"><use href="#i-ig"/></svg> @ogrupojovem</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- verse rotator -->
+    <div class="reveal mt-10 text-center">
+      <p class="text-[11px] font-extrabold tracking-[.3em] uppercase text-white/40">palavra pra aquecer o coração</p>
+      <p id="verso" class="font-display italic text-xl sm:text-2xl mt-3 text-white/85 transition-opacity duration-500">“Jovem, eu te digo: levanta-te!” — Lc 7,14</p>
+      <div class="flex justify-center gap-1.5 mt-3" id="verso-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section id="faq" class="relative py-20 sm:py-24 bg-[#150a1c] border-y border-white/10 scroll-mt-24">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <div class="text-center reveal">
+      <p class="font-hand text-2xl sm:text-3xl text-[#FFC24B]">perguntinhas frequentes…</p>
+      <h2 class="font-display font-black text-4xl sm:text-5xl">Dúvidas? <span class="italic font-light">A gente responde ♡</span></h2>
+    </div>
+    <div class="mt-10 space-y-3">
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">Onde exatamente vai ser? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">Na <strong class="text-white">Paróquia Matriz de São Gonçalo</strong> (Igreja Matriz de São Gonçalo do Amarante) — Alameda Pio XII, 86, Centro (Zé Garoto), São Gonçalo – RJ. Na seção <a href="#local" class="text-[#FFC24B] font-bold">Local</a> tem mapa, Google Maps e Waze. 📍</p>
+      </details>
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">Preciso ser católico pra ir? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">Não! Todo mundo é bem-vindo — católicos, curiosos, afastados, amigos de outra fé. O encontro é católico no jeito de rezar, mas o abraço é universal. Vem como você está.</p>
+      </details>
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">Posso ir sozinho(a)? Vou ficar deslocado? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">Pode e deve! A maioria chega sozinha na primeira vez. Nossa equipe de acolhida te recebe pelo nome, te apresenta pra galera e não te deixa um minuto de fora. Promessa do Grupo Jovem.</p>
+      </details>
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">É pago? Precisa se inscrever? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">É 100% gratuito, sempre. A inscrição na lista da estreia só garante sua pulseirinha, seu lanche e um lugarzinho especial — mas ninguém fica de fora por não ter se inscrito.</p>
+      </details>
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">Não consigo ir na estreia. E agora? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">Relaxa! O Grupo Jovem é semanal: <strong class="text-white"><span data-gj="todo">toda quarta</span>, às <span data-gj="time">19h30</span></strong>, na Matriz. A porta tá sempre aberta — chega na próxima que a gente te recebe com festa. 🎉</p>
+      </details>
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">E se eu for tímido / ansioso? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">A gente entende — e preparou tudo pensando em você: cantinhos tranquilos, equipe treinada, dinâmicas leves sem exposição e a liberdade de só assistir e curtir no seu ritmo. Ninguém é forçado a nada.</p>
+      </details>
+      <details class="reveal rounded-2xl bg-white/[.04] border border-white/10 open:border-[#FFC24B]/40 open:bg-[#FFC24B]/[.06] transition overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-bold list-none">Como falo com a equipe? <span class="plus shrink-0 w-8 h-8 rounded-full bg-[#FFC24B]/15 grid place-items-center text-[#FFC24B] text-xl leading-none">+</span></summary>
+        <p class="px-5 pb-5 text-sm text-white/60 leading-relaxed">No WhatsApp <a class="text-[#25D366] font-bold" href="https://wa.me/5521978796769" target="_blank" rel="noopener">(21) 97879-6769</a> ou no Instagram <a class="text-[#FFC24B] font-bold" href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener">@ogrupojovem</a> — respondemos rapidinho, de coração aberto. Pode perguntar tudo: carona solidária, como ser voluntário, como servir na banda…</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FINAL CTA ══════════ -->
+<section class="relative py-24 sm:py-32 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.pexels.com/photos/17030065/pexels-photo-17030065.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="" class="w-full h-full object-cover opacity-25">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0D060F] via-[#1c0b28]/80 to-[#0D060F]"></div>
+  </div>
+  <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center reveal">
+    <span class="gj-logo lg w-20 h-20 mx-auto" aria-hidden="true">
+      <span class="gj-logo-inner">
+        <span class="gj-rays"></span>
+        <svg class="gj-cross" viewBox="0 0 24 24"><rect x="10.3" y="1.5" width="3.4" height="21" rx="1.3"/><rect x="4.8" y="6.4" width="14.4" height="3.4" rx="1.3"/></svg>
+      </span>
+    </span>
+    <h2 class="font-display font-black text-[13vw] sm:text-7xl leading-[.95] mt-6">Sua melhor fase<br><span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-[#FFC24B] via-[#FF7A00] to-[#FF4D6D]">começa <span data-gj="ddmm">28/10</span></span></h2>
+    <p class="text-white/65 max-w-xl mx-auto mt-5">Traga seu sorriso, sua história e aquele amigo que vive dizendo “vamos marcar”. Deus já reservou sua cadeira na Matriz — e a pizza também.</p>
+    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 mt-8">
+      <a href="#lista" class="btn-shine inline-flex justify-center items-center gap-2 bg-[#FFC24B] hover:bg-[#ffcf6b] text-[#140817] font-extrabold rounded-full px-8 py-4 transition hover:-translate-y-0.5 shadow-[0_20px_60px_-15px_rgba(255,194,75,.6)]"><i data-lucide="ticket" class="w-5 h-5"></i> Garantir meu lugar</a>
+      <a href="https://wa.me/5521978796769?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Grupo%20Jovem%20%F0%9F%99%8F" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 glass hover:bg-white/15 font-extrabold rounded-full px-8 py-4 transition hover:-translate-y-0.5"><svg class="w-5 h-5 text-[#25D366]" viewBox="0 0 24 24"><use href="#i-wa"/></svg> (21) 97879-6769</a>
+      <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 glass hover:bg-white/15 font-extrabold rounded-full px-8 py-4 transition hover:-translate-y-0.5"><svg class="w-5 h-5 text-[#F77FB5]" viewBox="0 0 24 24"><use href="#i-ig"/></svg> @ogrupojovem</a>
+    </div>
+    <p class="mt-7 text-xs text-white/45 flex flex-wrap items-center justify-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Paróquia Matriz de São Gonçalo • Alameda Pio XII, 86 – Centro • São Gonçalo – RJ</p>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="border-t border-white/10 bg-[#0a040c]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-10 grid gap-8 md:grid-cols-3 items-center">
+    <a href="#topo" class="flex items-center gap-3 justify-center md:justify-start">
+      <span class="gj-logo w-11 h-11" aria-hidden="true">
+        <span class="gj-logo-inner">
+          <span class="gj-rays"></span>
+          <svg class="gj-cross" viewBox="0 0 24 24"><rect x="10.3" y="1.5" width="3.4" height="21" rx="1.3"/><rect x="4.8" y="6.4" width="14.4" height="3.4" rx="1.3"/></svg>
+        </span>
+      </span>
+      <span class="text-sm"><span class="block font-extrabold">GRUPO JOVEM • grupojovem.com</span><span class="block text-white/45 text-xs">Jovens católicos • encontros semanais • 14–35 anos</span></span>
+    </a>
+    <div class="text-center text-xs text-white/50 leading-relaxed">
+      <p class="font-bold text-white/80 flex items-center justify-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FFC24B]"></i> Paróquia Matriz de São Gonçalo</p>
+      <p>Alameda Pio XII, 86 – Centro (Zé Garoto) • São Gonçalo – RJ</p>
+      <p class="mt-1"><span data-gj="todo-cap">Toda quarta</span> • <span data-gj="time">19h30</span> • entrada gratuita</p>
+    </div>
+    <div class="flex items-center justify-center md:justify-end gap-2">
+      <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" class="rounded-full ig-ring p-[2px] hover:scale-105 transition-transform">
+        <span class="inline-flex items-center gap-2 rounded-full bg-[#0a040c] px-4 py-2 text-sm font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24"><use href="#i-ig"/></svg> @ogrupojovem</span>
+      </a>
+      <a href="https://wa.me/5521978796769" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#25D366] grid place-items-center hover:brightness-110 transition" aria-label="WhatsApp"><svg class="w-5 h-5 text-[#062b16]" viewBox="0 0 24 24"><use href="#i-wa"/></svg></a>
+    </div>
+  </div>
+  <div class="border-t border-white/5 py-5 px-4 text-center text-[11px] text-white/35">© 2026 Grupo Jovem • “Alegrai-vos sempre no Senhor” — Fl 4,4 • Feito com fé, amizade e muita alegria ♡</div>
+</footer>
+
+<!-- ══════════ FLOATING BUTTONS ══════════ -->
+<div class="fixed bottom-5 right-5 z-[80] flex flex-col items-end gap-3">
+  <a href="https://www.instagram.com/ogrupojovem/" target="_blank" rel="noopener" aria-label="Instagram @ogrupojovem" class="group flex items-center gap-2 mr-1.5">
+    <span class="hidden sm:block max-w-0 overflow-hidden group-hover:max-w-[200px] transition-all duration-500 whitespace-nowrap text-xs font-bold bg-white text-[#140817] rounded-full px-0 group-hover:px-4 py-2 shadow-xl">@ogrupojovem</span>
+    <span class="w-11 h-11 rounded-full ig-ring grid place-items-center shadow-[0_12px_30px_-10px_rgba(214,41,118,.8)] hover:scale-110 transition-transform"><svg class="w-5 h-5 text-white" viewBox="0 0 24 24"><use href="#i-ig"/></svg></span>
+  </a>
+  <a href="https://wa.me/5521978796769?text=Ol%C3%A1!%20Vim%20pelo%20site%20grupojovem.com%20e%20quero%20saber%20mais%20sobre%20o%20Grupo%20Jovem%20%F0%9F%99%8F%F0%9F%8E%89" target="_blank" rel="noopener" aria-label="WhatsApp" class="group flex items-center gap-2">
+    <span class="hidden sm:block max-w-0 overflow-hidden group-hover:max-w-[220px] transition-all duration-500 whitespace-nowrap text-xs font-bold bg-white text-[#140817] rounded-full px-0 group-hover:px-4 py-2.5 shadow-xl">Fala com a gente! 💛</span>
+    <span class="relative w-14 h-14 rounded-full bg-[#25D366] grid place-items-center shadow-[0_15px_40px_-10px_rgba(37,211,102,.7)] hover:scale-110 transition-transform">
+      <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25"></span>
+      <svg class="relative w-7 h-7 text-white" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+    </span>
+  </a>
+</div>
+
+<script>
+  // ═══════════════ CONFIGURAÇÃO ═══════════════
+  // Mude a data aqui e o site inteiro (textos, contagem, agenda e WhatsApp) se atualiza sozinho.
+  const GJ = {
+    estreia:   '2026-10-28T19:30:00-03:00', // data e hora da estreia (horário de Brasília)
+    whatsapp:  '5521978796769',
+    instagram: 'ogrupojovem',
+    local:     'Paróquia Matriz de São Gonçalo',
+    endereco:  'Alameda Pio XII, 86 – Centro (Zé Garoto), São Gonçalo – RJ'
+  };
+
+  lucide.createIcons();
+
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, '0');
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const DIAS = [['domingo','todo domingo','dom'],['segunda-feira','toda segunda','seg'],['terça-feira','toda terça','ter'],['quarta-feira','toda quarta','qua'],['quinta-feira','toda quinta','qui'],['sexta-feira','toda sexta','sex'],['sábado','todo sábado','sáb']];
+  const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+
+  // ── Datas (sempre no horário de Brasília) ──
+  const T = new Date(GJ.estreia).getTime();
+  const toBR = ms => new Date(ms - 3 * 36e5);
+  const fmtHora = d => d.getUTCHours() + 'h' + (d.getUTCMinutes() ? pad(d.getUTCMinutes()) : '');
+  const dt = toBR(T), wd = DIAS[dt.getUTCDay()], dia = dt.getUTCDate(), mes = dt.getUTCMonth();
+  const hora = fmtHora(dt), portas = fmtHora(toBR(T - 30 * 6e4));
+  const DATA = {
+    'weekday': wd[0], 'weekday-cap': cap(wd[0]), 'todo': wd[1], 'todo-cap': cap(wd[1]), 'wd-short': wd[2],
+    'day-month': `${dia} de ${MESES[mes]}`, 'day-month-cap': `${dia} de ${cap(MESES[mes])}`,
+    'ddmm': `${pad(dia)}/${pad(mes + 1)}`, 'day': String(dia), 'mon': MESES[mes].slice(0, 3),
+    'year': String(dt.getUTCFullYear()), 'time': hora, 'doors': portas
+  };
+  document.querySelectorAll('[data-gj]').forEach(el => { const v = DATA[el.dataset.gj]; if (v !== undefined) el.textContent = v; });
+  // 28/10 = dia de São Judas Tadeu → o destaque só aparece se a estreia cair nessa data
+  if (!(mes === 9 && dia === 28)) document.querySelectorAll('.js-sjudas').forEach(el => el.remove());
+
+  // ── Contagem regressiva ──
+  function tick(){
+    const diff = T - Date.now(), nav = $('nav-countdown');
+    if (diff <= 0){
+      ['cd-d','cd-h','cd-m','cd-s'].forEach(id => $(id).textContent = '00');
+      nav.textContent = (-diff < 4 * 36e5) ? 'Acontecendo agora! 🎉' : `${cap(wd[1])} • ${hora}`;
+      return;
+    }
+    const d = Math.floor(diff / 864e5), h = Math.floor(diff % 864e5 / 36e5), m = Math.floor(diff % 36e5 / 6e4), s = Math.floor(diff % 6e4 / 1e3);
+    $('cd-d').textContent = pad(d); $('cd-h').textContent = pad(h); $('cd-m').textContent = pad(m); $('cd-s').textContent = pad(s);
+    nav.textContent = d > 1 ? `Faltam ${d} dias` : d === 1 ? 'Falta 1 dia!' : (h > 0 ? `Faltam ${h}h ${pad(m)}min` : `Começa em ${pad(m)}min!`);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ── Animações ao rolar ──
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── Confete de boas-vindas ──
+  const COLORS = ['#FFC24B','#FF4D6D','#FF7A00','#ffffff','#7C3AED'];
+  setTimeout(() => { if (window.confetti) confetti({ particleCount: 90, spread: 75, origin: { y: .25 }, colors: COLORS }); }, 700);
+
+  // ── Agenda (Google + .ics) ──
+  const END = T + 3 * 36e5;
+  const icsDate = ms => new Date(ms).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const calTitle = 'Estreia do Grupo Jovem 🎉';
+  const calDesc = `Louvor, amizade, fé e pizza! Entrada gratuita — traga um amigo.\nWhatsApp: (21) 97879-6769\nInstagram: @${GJ.instagram}\ngrupojovem.com`;
+  const calLoc = `${GJ.local} – ${GJ.endereco}`;
+  const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(calTitle)}&dates=${icsDate(T)}/${icsDate(END)}&details=${encodeURIComponent(calDesc)}&location=${encodeURIComponent(calLoc)}`;
+  document.querySelectorAll('.js-gcal').forEach(a => a.href = gcal);
+  document.querySelectorAll('.js-ics').forEach(b => b.addEventListener('click', () => {
+    const esc = s => s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+    const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Grupo Jovem//Estreia//PT-BR','BEGIN:VEVENT',
+      `UID:estreia-${icsDate(T)}@grupojovem.com`, `DTSTAMP:${icsDate(Date.now())}`, `DTSTART:${icsDate(T)}`, `DTEND:${icsDate(END)}`,
+      `SUMMARY:${esc(calTitle)}`, `DESCRIPTION:${esc(calDesc)}`, `LOCATION:${esc(calLoc)}`, 'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+    a.download = 'estreia-grupo-jovem.ics'; document.body.appendChild(a); a.click(); a.remove();
+  }));
+
+  // ── Formulário → WhatsApp ──
+  let idade = '18–25';
+  document.querySelectorAll('.idade-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.idade-btn').forEach(x => x.classList.remove('tab-active'));
+    b.classList.add('tab-active'); idade = b.dataset.idade;
+  }));
+  const fone = $('lead-fone');
+  fone.addEventListener('input', () => {
+    let v = fone.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 2) v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+    if (v.length > 10) v = v.slice(0, 10) + '-' + v.slice(10);
+    fone.value = v;
+  });
+  $('lead-form').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const nome = $('lead-nome').value.trim() || 'Amigo(a)';
+    const msg = `Olá! Sou ${nome} (${idade}) e quero estar na ESTREIA do Grupo Jovem — ${wd[0]}, ${DATA.ddmm}, às ${hora}, na ${GJ.local}! Me coloca na lista, por favor 🙏🎉 (vim pelo site grupojovem.com)`;
+    const url = `https://wa.me/${GJ.whatsapp}?text=${encodeURIComponent(msg)}`;
+    try { const lista = JSON.parse(localStorage.getItem('gj_lista') || '[]'); lista.push({ nome, idade, fone: fone.value, quando: new Date().toISOString() }); localStorage.setItem('gj_lista', JSON.stringify(lista)); } catch (err) {}
+    window.open(url, '_blank');
+    $('lead-wa-link').href = url;
+    $('lead-form').classList.add('hidden');
+    $('lead-ok').classList.remove('hidden');
+    $('lead-ok-nome').textContent = `${nome.split(' ')[0]}, você está dentro! 🎉`;
+    lucide.createIcons();
+    confetti({ particleCount: 160, spread: 100, origin: { y: .6 }, colors: ['#FFC24B','#FF4D6D','#25D366','#ffffff','#7C3AED'] });
+    setTimeout(() => confetti({ particleCount: 80, angle: 60, spread: 60, origin: { x: 0, y: .7 }, colors: COLORS }), 300);
+    setTimeout(() => confetti({ particleCount: 80, angle: 120, spread: 60, origin: { x: 1, y: .7 }, colors: COLORS }), 450);
+    const bar = $('vagas-bar'), num = $('vagas-num');
+    if (bar) bar.style.width = '73%';
+    if (num) num.textContent = parseInt(num.textContent, 10) + 1;
+  });
+
+  // ── Convidar amigo ──
+  const siteUrl = location.protocol.startsWith('http') ? location.href.split('#')[0] : 'https://grupojovem.com';
+  const shareText = `Bora comigo na estreia do Grupo Jovem? ${cap(wd[0])}, ${DATA.ddmm}, às ${hora}, na ${GJ.local}. Louvor, amigos e pizza! 🙏🎉 Segue @${GJ.instagram}`;
+  $('share-btn').addEventListener('click', async () => {
+    if (navigator.share){ try { await navigator.share({ title: 'Grupo Jovem — VEM AÍ!', text: shareText, url: siteUrl }); } catch (err) {} }
+    else { window.open(`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + siteUrl)}`, '_blank'); }
+  });
+
+  // ── Copiar @ do Instagram ──
+  $('copy-ig').addEventListener('click', async ev => {
+    const lbl = ev.currentTarget.querySelector('.lbl');
+    try { await navigator.clipboard.writeText('@' + GJ.instagram); lbl.textContent = 'Copiado! 💛'; }
+    catch (err) { lbl.textContent = '@' + GJ.instagram; }
+    setTimeout(() => lbl.textContent = 'Copiar @', 1800);
+  });
+
+  // ── Versículos ──
+  const versos = ['“Jovem, eu te digo: levanta-te!” — Lc 7,14','“Alegrai-vos sempre no Senhor!” — Fl 4,4','“Ninguém despreze a tua juventude.” — 1Tm 4,12','“Sê forte e corajoso!” — Js 1,9','“Vós sois a luz do mundo.” — Mt 5,14','“Tudo posso naquele que me fortalece.” — Fl 4,13'];
+  let vi = 0; const velo = $('verso'), dots = $('verso-dots');
+  versos.forEach((_, i) => { const d = document.createElement('span'); d.className = 'w-1.5 h-1.5 rounded-full ' + (i === 0 ? 'bg-[#FFC24B]' : 'bg-white/20'); dots.appendChild(d); });
+  setInterval(() => {
+    vi = (vi + 1) % versos.length; velo.style.opacity = 0;
+    setTimeout(() => { velo.textContent = versos[vi]; velo.style.opacity = 1; [...dots.children].forEach((d, i) => d.className = 'w-1.5 h-1.5 rounded-full ' + (i === vi ? 'bg-[#FFC24B]' : 'bg-white/20')); }, 400);
+  }, 5000);
+</script>
+</body>
+</html>
